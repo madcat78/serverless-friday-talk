@@ -2,6 +2,6 @@
 
 SAM_CLI_TELEMETRY=0
 
-sam build
+sam build --beta-features
 
 sam local start-api

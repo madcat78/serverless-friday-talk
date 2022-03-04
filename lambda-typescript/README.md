@@ -1,14 +1,17 @@
-# sam-hello
+# lambda-typescript
 
 ## Init
+sam init --name lambda-typescript --runtime nodejs14.x --dependency-manager npm --app-template hello-world-typescript
 
-sam init --name sam-hello --runtime nodejs14.x --dependency-manager npm --app-template hello-world
+## Resources
+
+https://aws.amazon.com/blogs/compute/building-typescript-projects-with-aws-sam-cli/
 
 ## Original README
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
-- hello-world - Code for the application's Lambda function.
+- hello-world - Code for the application's Lambda function written in TypeScript.
 - events - Invocation events that you can use to invoke the function.
 - hello-world/tests - Unit tests for the application code.
 - template.yaml - A template that defines the application's AWS resources.
@@ -37,7 +40,7 @@ The Serverless Application Model Command Line Interface (SAM CLI) is an extensio
 To use the SAM CLI, you need the following tools.
 
 * SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
-* Node.js - [Install Node.js 10](https://nodejs.org/en/), including the NPM package management tool.
+* Node.js - [Install Node.js 14](https://nodejs.org/en/), including the NPM package management tool.
 * Docker - [Install Docker community edition](https://hub.docker.com/search/?type=edition&offering=community)
 
 To build and deploy your application for the first time, run the following in your shell:
@@ -62,24 +65,24 @@ You can find your API Gateway Endpoint URL in the output values displayed after 
 Build your application with the `sam build` command.
 
 ```bash
-sam-hello$ sam build
+lambda-typescript$ sam build
 ```
 
-The SAM CLI installs dependencies defined in `hello-world/package.json`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
+The SAM CLI installs dependencies defined in `hello-world/package.json`, compiles TypeScript with esbuild, creates a deployment package, and saves it in the `.aws-sam/build` folder.
 
 Test a single function by invoking it directly with a test event. An event is a JSON document that represents the input that the function receives from the event source. Test events are included in the `events` folder in this project.
 
 Run functions locally and invoke them with the `sam local invoke` command.
 
 ```bash
-sam-hello$ sam local invoke HelloWorldFunction --event events/event.json
+lambda-typescript$ sam local invoke HelloWorldFunction --event events/event.json
 ```
 
 The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
 
 ```bash
-sam-hello$ sam local start-api
-sam-hello$ curl http://localhost:3000/
+lambda-typescript$ sam local start-api
+lambda-typescript$ curl http://localhost:3000/
 ```
 
 The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
@@ -103,17 +106,17 @@ To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs`
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
 
 ```bash
-sam-hello$ sam logs -n HelloWorldFunction --stack-name sam-hello --tail
+lambda-typescript$ sam logs -n HelloWorldFunction --stack-name lambda-typescript --tail
 ```
 
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
 
 ## Unit tests
 
-Tests are defined in the `hello-world/tests` folder in this project. Use NPM to install the [Mocha test framework](https://mochajs.org/) and run unit tests.
+Tests are defined in the `hello-world/tests` folder in this project. Use NPM to install the [Jest test framework](https://jestjs.io/) and run unit tests.
 
 ```bash
-sam-hello$ cd hello-world
+lambda-typescript$ cd hello-world
 hello-world$ npm install
 hello-world$ npm run test
 ```
@@ -123,7 +126,7 @@ hello-world$ npm run test
 To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
 
 ```bash
-aws cloudformation delete-stack --stack-name sam-hello
+aws cloudformation delete-stack --stack-name lambda-typescript
 ```
 
 ## Resources
