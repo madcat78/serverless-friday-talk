@@ -4,7 +4,7 @@ Description: >
   sam-docker-hello
 
   Sample SAM Template for sam-docker-hello
-  
+
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
@@ -17,6 +17,7 @@ Resources:
       PackageType: Image
       Architectures:
         - x86_64
+        # - arm64
       Events:
         HelloWorld:
           Type: Api

@@ -2,8 +2,8 @@
 
 SAM_CLI_TELEMETRY=0
 
-sam local invoke -e events/event.json
+sam build --use-container
 
-sam build
+sam local invoke -e events/event.json
 
 sam local start-api
