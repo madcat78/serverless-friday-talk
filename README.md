@@ -32,3 +32,8 @@ nestjs typescript example
 ## lambda-typescript
 
 typescript esbuild preview example
+
+
+## lambda-rust
+
+rust custom runtime example
