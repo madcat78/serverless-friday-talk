@@ -37,3 +37,10 @@ typescript esbuild preview example
 ## lambda-rust
 
 rust custom runtime example
+
+
+## lambda-rust-http
+
+rust custom runtime http example
+
+Test it with *curl* in this way: http://localhost:3000/hello\?first_name\=MadCat
